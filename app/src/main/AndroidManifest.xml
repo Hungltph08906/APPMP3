@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyMV"></activity>
+        <activity android:name=".NhactreActivity"></activity>
+        <activity android:name=".AlbumTDQActivity" />
+        <activity android:name=".TDQActivity" />
+        <activity android:name=".PlayActivity" />
+        <activity android:name=".MyMV" />
         <activity android:name=".MV" />
         <activity android:name=".Casi" />
         <activity android:name=".NhacMoi" />

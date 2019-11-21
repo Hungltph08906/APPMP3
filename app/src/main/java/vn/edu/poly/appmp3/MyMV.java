@@ -18,4 +18,7 @@ public class MyMV extends AppCompatActivity {
         Intent intent = new Intent(MyMV.this, TrangCaNhan.class);
         startActivity(intent);
     }
+
+    public void playmv(View view) {
+    }
 }

@@ -6,22 +6,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Album extends AppCompatActivity {
+public class AlbumTDQActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_album);
+        setContentView(R.layout.activity_album_tdq);
     }
 
     public void back(View view) {
-        Intent intent = new Intent(Album.this, TrangCaNhan.class);
+        Intent intent = new Intent(AlbumTDQActivity.this, Album.class);
         startActivity(intent);
     }
 
-    public void albumtdq(View view) {
-        Intent intent = new Intent(Album.this, AlbumTDQActivity.class);
+    public void play1(View view) {
+        Intent intent = new Intent(AlbumTDQActivity.this, PlayActivity.class);
         startActivity(intent);
-
     }
 }

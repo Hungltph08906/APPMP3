@@ -44,6 +44,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:onClick="nhacmoi"
             android:layout_marginLeft="40dp"
             android:orientation="vertical"
             android:layout_width="150dp"
@@ -57,7 +58,7 @@
                 android:layout_marginTop="10dp"
                 android:textColor="#FF0000"
                 android:textSize="17dp"
-                android:text="Nhạc Việt Đầy hứa hẹn"
+                android:text="Nhạc trẻ mới"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -103,7 +104,7 @@
                 android:layout_marginTop="10dp"
                 android:textColor="#FF0000"
                 android:textSize="17dp"
-                android:text="Nhạc mới 2019"
+                android:text="Nhạc trữ tình"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -184,13 +185,14 @@
         </LinearLayout>
 
         <LinearLayout
+            android:onClick="mv"
             android:layout_marginTop="55dp"
             android:layout_width="80dp"
             android:gravity="center"
             android:layout_height="70dp">
 
             <ImageView
-                android:src="@drawable/top"
+                android:src="@drawable/mv"
                 android:layout_width="35dp"
                 android:layout_height="35dp"/>
 

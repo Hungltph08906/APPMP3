@@ -24,4 +24,9 @@ public class Casi extends AppCompatActivity {
         Intent intent = new Intent(Casi.this, NhacMoi.class);
         startActivity(intent);
     }
+
+    public void mv(View view) {
+        Intent intent = new Intent(Casi.this, MV.class);
+        startActivity(intent);
+    }
 }

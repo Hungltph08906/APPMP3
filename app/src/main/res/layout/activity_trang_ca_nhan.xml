@@ -80,7 +80,7 @@
         <TextView
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="Trịnh Đình Quang"
+            android:text="Nhạc yêu thích"
             android:textColor="#DD3300"
             android:textSize="18dp"
             android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
         <TextView
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="Lê Bảo Bình"
+            android:text="Buồn"
             android:textColor="#DD3300"
             android:textSize="18dp"
             android:layout_width="wrap_content"

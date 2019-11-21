@@ -24,4 +24,14 @@ public class NhacMoi extends AppCompatActivity {
         Intent intent = new Intent(NhacMoi.this, Casi.class);
         startActivity(intent);
     }
+
+    public void nhacmoi(View view) {
+        Intent intent = new Intent(NhacMoi.this, NhactreActivity.class);
+        startActivity(intent);
+    }
+
+    public void mv(View view) {
+        Intent intent = new Intent(NhacMoi.this, MV.class);
+        startActivity(intent);
+    }
 }

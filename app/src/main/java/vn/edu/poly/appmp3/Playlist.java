@@ -18,4 +18,10 @@ public class Playlist extends AppCompatActivity {
         Intent intent = new Intent(Playlist.this, TrangCaNhan.class);
         startActivity(intent);
     }
+
+    public void trinhdinhquang(View view) {
+        Intent intent = new Intent(Playlist.this, TDQActivity.class);
+        startActivity(intent);
+
+    }
 }
