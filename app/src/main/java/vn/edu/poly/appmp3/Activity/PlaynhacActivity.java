@@ -88,12 +88,10 @@ public class PlaynhacActivity extends AppCompatActivity {
             if (intent.hasExtra("cakhuc")){
                 Baihat baihat = intent.getParcelableExtra("cakhuc");;
                 mangbaihat.add(baihat);
-                ArrayList<Baihat> baihatArrayList = intent.getParcelableArrayListExtra("cacbaihat");
-                mangbaihat = baihatArrayList;
                 MediaPlayer mediaPlayer = new MediaPlayer();
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 try {
-                    mediaPlayer.setDataSource(mangbaihat.get(Integer.parseInt(baihat.getIdBaihat())).getLinkBaihat());
+                    mediaPlayer.setDataSource(baihat.getLinkBaihat());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
