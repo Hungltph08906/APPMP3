@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.StrictMode;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -15,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import vn.edu.poly.appmp3.Adapter.ViewPagerPlaylistnhac;
@@ -64,19 +61,19 @@ public class PlaynhacActivity extends AppCompatActivity {
 //
 //            }
 //        },500);
-        imgplay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mediaPlayer.isPlaying()){
-                    mediaPlayer.pause();
-                    imgplay.setImageResource(R.drawable.play);
-
-                }else {
-                    mediaPlayer.start();
-                    imgplay.setImageResource(R.drawable.stop);
-                }
-            }
-        });
+//        imgplay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mediaPlayer.isPlaying()){
+//                    mediaPlayer.pause();
+//                    imgplay.setImageResource(R.drawable.play);
+//
+//                }else {
+//                    mediaPlayer.start();
+//                    imgplay.setImageResource(R.drawable.stop);
+//                }
+//            }
+//        });
 
     }
 
@@ -146,48 +143,7 @@ public class PlaynhacActivity extends AppCompatActivity {
 //            fragment_dianhac = (Fragment_Dianhac) adapternhac.getItem(1);
 //        }
     }
-    private void UpdateTimeSong(){
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                SimpleDateFormat dinhDangGio = new SimpleDateFormat("mm:ss");
-                tvtimesong.setText(dinhDangGio.format(mediaPlayer.getCurrentPosition()));
-                //update progress skSong
-                sktime.setProgress(mediaPlayer.getCurrentPosition());
 
-                //kiểm tra thời gian bài hát --> nếu kết thúc --> next
-
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        position++;
-                        if (position > arraySong.size() - 1){
-                            position = 0;
-                        }
-                        if (mediaPlayer.isPlaying()){
-                            mediaPlayer.stop();
-                        }
-                        mediaPlayer.start();
-                        imgplay.setImageResource(R.drawable.pause);
-                        SetTimTotal();
-                        UpdateTimeSong();
-
-                    }
-                });
-                handler.postDelayed(this, 500);
-            }
-        },100);
-    }
-
-
-    private void SetTimTotal(){
-
-        SimpleDateFormat dinhDangGio = new SimpleDateFormat("mm:ss");
-        tvtimesong.setText(dinhDangGio.format(mediaPlayer.getDuration()));
-        //gán max của skSong  = MediaPlay.getDuration();
-        sktime.setMax(mediaPlayer.getDuration());
-    }
 
 //    class PlayMp3 extends AsyncTask<String, Void, String>{
 //

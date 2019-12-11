@@ -15,9 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.poly.appmp3.Adapter.MVAdapter;
-import vn.edu.poly.appmp3.Casi;
 import vn.edu.poly.appmp3.Model.MV;
-import vn.edu.poly.appmp3.NhacMoi;
 import vn.edu.poly.appmp3.R;
 import vn.edu.poly.appmp3.Service.APIService;
 import vn.edu.poly.appmp3.Service.Dataservice;
@@ -67,12 +65,12 @@ public class MVActivity extends AppCompatActivity {
     }
 
     public void nhacmoi(View view) {
-        Intent intent = new Intent(MVActivity.this, NhacMoi.class);
+        Intent intent = new Intent(MVActivity.this, AlbumActivity.class);
         startActivity(intent);
     }
 
     public void casi(View view) {
-        Intent intent = new Intent(MVActivity.this, Casi.class);
+        Intent intent = new Intent(MVActivity.this, PlaylistActivity.class);
         startActivity(intent);
     }
 }

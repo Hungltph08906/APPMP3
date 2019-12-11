@@ -41,12 +41,12 @@ public class TrangCaNhan extends AppCompatActivity {
     }
 
     public void nhacmoi(View view) {
-        Intent intent = new Intent(TrangCaNhan.this, NhacMoi.class);
+        Intent intent = new Intent(TrangCaNhan.this, AlbumActivity.class);
         startActivity(intent);
     }
 
     public void casi(View view) {
-        Intent intent = new Intent(TrangCaNhan.this, Casi.class);
+        Intent intent = new Intent(TrangCaNhan.this, PlaylistActivity.class);
         startActivity(intent);
     }
 

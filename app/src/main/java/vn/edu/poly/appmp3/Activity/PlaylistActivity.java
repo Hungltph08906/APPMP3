@@ -71,4 +71,22 @@ public class PlaylistActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void mv(View view) {
+        Intent intent = new Intent(PlaylistActivity.this, MVActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void Album(View view) {
+        Intent intent = new Intent(PlaylistActivity.this, AlbumActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void trangcanhan(View view) {
+        Intent intent = new Intent(PlaylistActivity.this, TrangCaNhan.class);
+        startActivity(intent);
+
+    }
 }
