@@ -1,10 +1,15 @@
 package vn.edu.poly.appmp3;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import vn.edu.poly.appmp3.Activity.AlbumActivity;
+import vn.edu.poly.appmp3.Activity.DanhsachcacbaihatActivity;
+import vn.edu.poly.appmp3.Activity.MVActivity;
+import vn.edu.poly.appmp3.Activity.PlaylistActivity;
 
 public class TrangCaNhan extends AppCompatActivity {
 
@@ -15,17 +20,17 @@ public class TrangCaNhan extends AppCompatActivity {
     }
 
     public void baihat(View view) {
-        Intent intent = new Intent(TrangCaNhan.this, BaiHat.class);
+        Intent intent = new Intent(TrangCaNhan.this, BaiHat11.class);
         startActivity(intent);
     }
 
     public void playlist(View view) {
-        Intent intent = new Intent(TrangCaNhan.this, Playlist.class);
+        Intent intent = new Intent(TrangCaNhan.this, PlaylistActivity.class);
         startActivity(intent);
     }
 
     public void album(View view) {
-        Intent intent = new Intent(TrangCaNhan.this, Album.class);
+        Intent intent = new Intent(TrangCaNhan.this, AlbumActivity.class);
         startActivity(intent);
     }
 
@@ -45,12 +50,17 @@ public class TrangCaNhan extends AppCompatActivity {
     }
 
     public void mv(View view) {
-        Intent intent = new Intent(TrangCaNhan.this, MV.class);
+        Intent intent = new Intent(TrangCaNhan.this, MVActivity.class);
         startActivity(intent);
     }
 
     public void mymv(View view) {
         Intent intent = new Intent(TrangCaNhan.this, MyMV.class);
+        startActivity(intent);
+    }
+
+    public void danhsachbaihat(View view) {
+        Intent intent = new Intent(TrangCaNhan.this, DanhsachcacbaihatActivity.class);
         startActivity(intent);
     }
 }

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import vn.edu.poly.appmp3.Activity.MVActivity;
+
 public class NhacMoi extends AppCompatActivity {
 
     @Override
@@ -31,7 +33,7 @@ public class NhacMoi extends AppCompatActivity {
     }
 
     public void mv(View view) {
-        Intent intent = new Intent(NhacMoi.this, MV.class);
+        Intent intent = new Intent(NhacMoi.this, MVActivity.class);
         startActivity(intent);
     }
 }

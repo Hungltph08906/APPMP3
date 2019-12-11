@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,123 +9,146 @@
 
 
     <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="40dp"
-        android:orientation="horizontal"
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:layout_marginLeft="20dp"
-            android:paddingLeft="8dp"
-            android:drawablePadding="8dp"
-            android:drawableLeft="@drawable/ic_search_black_24dp"
             android:id="@+id/edt_Book_Search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="16dp"
             android:layout_weight="1"
             android:background="@drawable/dialogbuttoncustom"
+            android:drawableLeft="@drawable/ic_search_black_24dp"
+            android:drawablePadding="8dp"
             android:ems="10"
             android:hint="Tìm Kiếm"
             android:inputType="textPersonName"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:paddingLeft="8dp" />
     </LinearLayout>
+
     <TextView
-        android:layout_marginTop="40dp"
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="282dp"
+        android:layout_marginRight="282dp"
+        android:text="Nhạc Mới"
         android:textColor="#DD3300"
         android:textSize="30dp"
-        android:text="Nhạc Mới"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9">
 
         <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="40dp"
             android:onClick="nhacmoi"
-            android:layout_marginLeft="40dp"
-            android:orientation="vertical"
-            android:layout_width="150dp"
-            android:layout_height="200dp">
+            android:orientation="vertical">
 
             <ImageView
-                android:src="@drawable/nhac1"
                 android:layout_width="150dp"
-                android:layout_height="150dp"/>
+                android:layout_height="150dp"
+                android:src="@drawable/nhac1" />
+
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColor="#FF0000"
-                android:textSize="17dp"
                 android:text="Nhạc trẻ mới"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textColor="#FF0000"
+                android:textSize="17dp" />
 
         </LinearLayout>
+
         <LinearLayout
-            android:layout_marginLeft="40dp"
-            android:orientation="vertical"
             android:layout_width="150dp"
-            android:layout_height="190dp">
+            android:layout_height="190dp"
+            android:layout_marginLeft="40dp"
+            android:orientation="vertical">
 
             <ImageView
-                android:src="@drawable/nhac2"
                 android:layout_width="150dp"
-                android:layout_height="150dp"/>
+                android:layout_height="150dp"
+                android:src="@drawable/nhac2" />
+
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColor="#FF0000"
                 android:text="Nhạc Bolero"
-                android:textSize="17dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textColor="#FF0000"
+                android:textSize="17dp" />
 
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
         <LinearLayout
-            android:layout_marginLeft="40dp"
-            android:orientation="vertical"
             android:layout_width="150dp"
-            android:layout_height="200dp">
+            android:layout_height="200dp"
+            android:layout_marginLeft="40dp"
+            android:orientation="vertical">
 
             <ImageView
-                android:src="@drawable/nhac3"
                 android:layout_width="150dp"
-                android:layout_height="150dp"/>
+                android:layout_height="150dp"
+                android:src="@drawable/nhac3" />
+
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColor="#FF0000"
-                android:textSize="17dp"
                 android:text="Nhạc trữ tình"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textColor="#FF0000"
+                android:textSize="17dp" />
 
         </LinearLayout>
+
         <LinearLayout
-            android:layout_marginLeft="40dp"
-            android:orientation="vertical"
             android:layout_width="150dp"
-            android:layout_height="190dp">
+            android:layout_height="190dp"
+            android:layout_marginLeft="40dp"
+            android:orientation="vertical">
 
             <ImageView
-                android:src="@drawable/nhac4"
                 android:layout_width="150dp"
-                android:layout_height="150dp"/>
+                android:layout_height="150dp"
+                android:src="@drawable/nhac4" />
+
             <TextView
-                android:layout_marginTop="10dp"
-                android:textColor="#FF0000"
-                android:text="Nhạc quê hương"
-                android:textSize="17dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Nhạc quê hương"
+                android:textColor="#FF0000"
+                android:textSize="17dp" />
 
         </LinearLayout>
 
@@ -133,71 +156,74 @@
 
 
     <LinearLayout
-        android:layout_marginTop="55dp"
+        android:layout_width="411dp"
+        android:layout_height="126dp"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
-            android:onClick="trangcanhan"
-            android:layout_marginTop="55dp"
             android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="55dp"
             android:gravity="center"
-            android:layout_height="70dp">
+            android:onClick="trangcanhan">
 
             <ImageView
-                android:src="@drawable/user"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:src="@drawable/user" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="55dp"
             android:layout_width="80dp"
-            android:gravity="center"
+            android:layout_height="70dp"
+            android:layout_marginTop="55dp"
             android:background="#FF9966"
-            android:layout_height="70dp">
+            android:gravity="center">
 
             <ImageView
-                android:src="@drawable/music"
                 android:layout_width="35dp"
-                android:layout_height="35dp"/>
+                android:layout_height="35dp"
+                android:src="@drawable/music" />
 
         </LinearLayout>
 
         <ImageView
-            android:src="@drawable/play"
             android:layout_width="90dp"
-            android:layout_height="90dp"/>
+            android:layout_height="90dp"
+            android:src="@drawable/play" />
+
         <LinearLayout
-            android:onClick="casi"
-            android:layout_marginTop="55dp"
             android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="55dp"
             android:gravity="center"
-            android:layout_height="70dp">
+            android:onClick="casi">
 
             <ImageView
-                android:src="@drawable/singer"
                 android:layout_width="35dp"
-                android:layout_height="35dp"/>
+                android:layout_height="35dp"
+                android:src="@drawable/singer" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:onClick="mv"
-            android:layout_marginTop="55dp"
             android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="55dp"
             android:gravity="center"
-            android:layout_height="70dp">
+            android:onClick="mv">
 
             <ImageView
-                android:src="@drawable/mv"
                 android:layout_width="35dp"
-                android:layout_height="35dp"/>
+                android:layout_height="35dp"
+                android:src="@drawable/mv" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
     android:orientation="horizontal"
     android:layout_height="80dp">
 
@@ -20,20 +21,20 @@
             android:id="@+id/tvtenbaihat"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:text="Simple Love"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/tvtencasi"
             android:textSize="17dp"
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:text="Obito"
             android:layout_height="wrap_content"/>
     </LinearLayout>
     <TextView
         android:id="@+id/tvthoigian"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="70dp"
+        android:layout_marginLeft="50dp"
         android:textSize="17dp"
         android:layout_width="wrap_content"
         android:text="3:34"

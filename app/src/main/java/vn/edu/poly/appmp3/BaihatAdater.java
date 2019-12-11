@@ -1,25 +1,29 @@
 package vn.edu.poly.appmp3;
 
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 public class BaihatAdater extends RecyclerView.Adapter<BaihatAdater.RecyclerViewHolder>{
 
-    private ArrayList<Baihatclass> data = new ArrayList<>();
+    List<Baihatclass> list;
+    Context context;
+//    ArrayList<Baihatclass> data = new ArrayList<>();
+//
+//    public BaihatAdater(ArrayList<Baihatclass> data) {
+//        this.data = data;
+//    }
 
-    public BaihatAdater(ArrayList<Baihatclass> data) {
-        this.data = data;
+    public BaihatAdater(List<Baihatclass> list, Context context) {
+        this.list = list;
+        this.context = context;
     }
 
     @Override
@@ -31,24 +35,24 @@ public class BaihatAdater extends RecyclerView.Adapter<BaihatAdater.RecyclerView
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        holder.tvTenbaihat.setText(data.get(position).getTenbaihat());
-        holder.tvTencasi.setText(data.get(position).getTencasi());
-        holder.tvThoigian.setText(data.get(position).getThoigian());
-        holder.imgBacham.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-                android.app.AlertDialog.Builder builder=new AlertDialog.Builder(view.getContext());
-                builder.setTitle("Thông Báo");
-                builder.setMessage("bạn có muốn xóa?");
-                builder.create().show();
-            }
-        });
+            holder.tvTenbaihat.setText(list.get(position).getTenbaihat());
+            holder.tvTencasi.setText(list.get(position).getTencasi());
+            holder.tvThoigian.setText(list.get(position).getThoigian());
+//        holder.imgBacham.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(final View view) {
+//                android.app.AlertDialog.Builder builder=new AlertDialog.Builder(view.getContext());
+//                builder.setTitle("Thông Báo");
+//                builder.setMessage("bạn có muốn xóa?");
+//                builder.create().show();
+//            }
+//        });
 
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return list.size();
     }
 
 

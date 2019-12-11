@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="5dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="280dp">
+        <ImageButton
+            android:id="@+id/imgnenmv"
+            android:src="@drawable/tdq"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+        <TextView
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="Ten ca khuc"
+            android:singleLine="true"
+            android:id="@+id/tvtenmv"
+            android:ellipsize="end"
+            android:maxWidth="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/chidan"
+                android:id="@+id/imgiconcasimv"
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="17sp"
+                android:text="Ten ca si"
+                android:id="@+id/tvtencasimv"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:maxWidth="250dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

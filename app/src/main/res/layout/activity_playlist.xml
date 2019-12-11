@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Playlist">
+    tools:context=".Activity.PlaylistActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,6 +28,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout1"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:orientation="horizontal"
@@ -49,48 +50,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
-    <LinearLayout
-        android:onClick="trinhdinhquang"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="horizontal"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPlaylist"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:src="@drawable/tdq"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Nhạc yêu thích"
-            android:textColor="#DD3300"
-            android:textSize="18dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:src="@drawable/tdq"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Buồn"
-            android:textColor="#DD3300"
-            android:textSize="18dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
+        android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
 
 
 </LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_margin="5dp"
+        android:elevation="6dp"
+        android:src="@drawable/tdq1"
+        android:id="@+id/imgnenplaylist"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+    <ImageView
+        android:src="@drawable/tdq"
+        android:id="@+id/imgitemplaylist"
+        android:layout_alignBottom="@id/imgnenplaylist"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:elevation="6dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:layout_alignBottom="@id/imgnenplaylist"
+        android:layout_toRightOf="@id/imgitemplaylist"
+        android:textColor="#660000"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:text="Trinh Dinh Quang"
+        android:id="@+id/tvitemplaylist"
+        android:maxLines="1"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="30dp"
+        android:ellipsize="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
