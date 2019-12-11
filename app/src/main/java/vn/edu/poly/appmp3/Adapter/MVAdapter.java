@@ -1,6 +1,7 @@
 package vn.edu.poly.appmp3.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import vn.edu.poly.appmp3.Activity.PlayMVActivity;
 import vn.edu.poly.appmp3.Model.MV;
 import vn.edu.poly.appmp3.R;
 
@@ -62,6 +64,14 @@ public class MVAdapter extends RecyclerView.Adapter<MVAdapter.ViewHolder> {
             tvtenmv = itemView.findViewById(R.id.tvtenmv);
             tvtencasimv = itemView.findViewById(R.id.tvtencasimv);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PlayMVActivity.class);
+                    intent.putExtra("mv",mangmv.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

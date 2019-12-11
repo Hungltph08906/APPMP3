@@ -196,23 +196,23 @@ public class PlaynhacActivity extends AppCompatActivity {
                 mediaPlayer.start();
 
             }
-//            if (intent.hasExtra("cacbaihat")){
-//                ArrayList<Baihat> baihatArrayList = intent.getParcelableArrayListExtra("cacbaihat");
-//                mangbaihat = baihatArrayList;
-//                MediaPlayer mediaPlayer = new MediaPlayer();
-//                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-//                try {
-//                    mediaPlayer.setDataSource(mangbaihat.get(0).getLinkBaihat());
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                try {
-//                    mediaPlayer.prepare(); // might take long! (for buffering, etc)
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                mediaPlayer.start();
-//            }
+            if (intent.hasExtra("cacbaihat")){
+                ArrayList<Baihat> baihatArrayList = intent.getParcelableArrayListExtra("cacbaihat");
+                mangbaihat = baihatArrayList;
+                MediaPlayer mediaPlayer = new MediaPlayer();
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                try {
+                    mediaPlayer.setDataSource(mangbaihat.get(0).getLinkBaihat());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    mediaPlayer.prepare(); // might take long! (for buffering, etc)
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mediaPlayer.start();
+            }
         }
 
     }
