@@ -78,6 +78,7 @@ public class DanhsachcacbaihatActivity extends AppCompatActivity {
                 danhsachbaihatAdapter = new DanhsachbaihatAdapter(DanhsachcacbaihatActivity.this,mangbaihat);
                 rycdanhsachcacbaihat.setLayoutManager(new LinearLayoutManager(DanhsachcacbaihatActivity.this));
                 rycdanhsachcacbaihat.setAdapter(danhsachbaihatAdapter);
+                eventClick();
 
             }
 
@@ -97,6 +98,7 @@ public class DanhsachcacbaihatActivity extends AppCompatActivity {
                 danhsachbaihatAdapter = new DanhsachbaihatAdapter(DanhsachcacbaihatActivity.this,mangbaihat);
                 rycdanhsachcacbaihat.setLayoutManager(new LinearLayoutManager(DanhsachcacbaihatActivity.this));
                 rycdanhsachcacbaihat.setAdapter(danhsachbaihatAdapter);
+                eventClick();
 
             }
 
@@ -164,6 +166,15 @@ public class DanhsachcacbaihatActivity extends AppCompatActivity {
         imgdanhsachbaihat = findViewById(R.id.imgdanhsachbaihat);
     }
     private void eventClick(){
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DanhsachcacbaihatActivity.this,PlaynhacActivity.class);
+                intent.putExtra("cacbaihat",mangbaihat);
+                startActivity(intent);
+            }
+
+        });
 
     }
 }
