@@ -3,7 +3,6 @@ package vn.edu.poly.appmp3.Activity;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -15,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import vn.edu.poly.appmp3.Adapter.ViewPagerPlaylistnhac;
@@ -44,6 +42,8 @@ public class PlaynhacActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         GetDataFromIntent();
         enventClick();
+
+
 
     }
 
@@ -83,6 +83,19 @@ public class PlaynhacActivity extends AppCompatActivity {
             if (intent.hasExtra("cakhuc")){
                 Baihat baihat = intent.getParcelableExtra("cakhuc");;
                 mangbaihat.add(baihat);
+                MediaPlayer mediaPlayer = new MediaPlayer();
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                try {
+                    mediaPlayer.setDataSource(baihat.getLinkBaihat());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    mediaPlayer.prepare(); // might take long! (for buffering, etc)
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mediaPlayer.start();
             }
             if (intent.hasExtra("cacbaihat")){
                 ArrayList<Baihat> baihatArrayList = intent.getParcelableArrayListExtra("cacbaihat");
@@ -115,41 +128,41 @@ public class PlaynhacActivity extends AppCompatActivity {
 //            fragment_dianhac = (Fragment_Dianhac) adapternhac.getItem(1);
 //        }
     }
-    class PlayMp3 extends AsyncTask<String, Void, String>{
-
-        @Override
-        protected String doInBackground(String... strings) {
-            return strings[0];
-
-        }
-
-        @Override
-        protected void onPostExecute(String baihat) {
-
-            super.onPostExecute(baihat);
-            try {
-            mediaPlayer = new MediaPlayer();
-            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    mediaPlayer.stop();
-                    mediaPlayer.reset();
-                }
-            });
-            mediaPlayer.setDataSource(baihat);
-            mediaPlayer.prepare();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            mediaPlayer.start();
-            TimeSong();
-        }
-    }
-
-    private void TimeSong() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
-        tvtataltimesong.setText(simpleDateFormat.format(mediaPlayer.getDuration()));
-        sktime.setMax(mediaPlayer.getDuration());
-    }
+//    class PlayMp3 extends AsyncTask<String, Void, String>{
+//
+//        @Override
+//        protected String doInBackground(String... strings) {
+//            return strings[0];
+//
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String baihat) {
+//
+//            super.onPostExecute(baihat);
+//            try {
+//            mediaPlayer = new MediaPlayer();
+//            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                @Override
+//                public void onCompletion(MediaPlayer mp) {
+//                    mediaPlayer.stop();
+//                    mediaPlayer.reset();
+//                }
+//            });
+//            mediaPlayer.setDataSource(baihat);
+//            mediaPlayer.prepare();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            mediaPlayer.start();
+//            TimeSong();
+//        }
+//    }
+//
+//    private void TimeSong() {
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
+//        tvtataltimesong.setText(simpleDateFormat.format(mediaPlayer.getDuration()));
+//        sktime.setMax(mediaPlayer.getDuration());
+//    }
 }

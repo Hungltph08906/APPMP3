@@ -10,6 +10,7 @@ import vn.edu.poly.appmp3.Activity.AlbumActivity;
 import vn.edu.poly.appmp3.Activity.DanhsachcacbaihatActivity;
 import vn.edu.poly.appmp3.Activity.MVActivity;
 import vn.edu.poly.appmp3.Activity.PlaylistActivity;
+import vn.edu.poly.appmp3.Activity.PlaynhacActivity;
 
 public class TrangCaNhan extends AppCompatActivity {
 
@@ -62,5 +63,11 @@ public class TrangCaNhan extends AppCompatActivity {
     public void danhsachbaihat(View view) {
         Intent intent = new Intent(TrangCaNhan.this, DanhsachcacbaihatActivity.class);
         startActivity(intent);
+    }
+
+    public void playnhac(View view) {
+        Intent intent = new Intent(TrangCaNhan.this, PlaynhacActivity.class);
+        startActivity(intent);
+
     }
 }
