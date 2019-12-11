@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.ImageButton;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import vn.edu.poly.appmp3.Adapter.ViewPagerPlaylistnhac;
@@ -26,6 +28,8 @@ public class PlaynhacActivity extends AppCompatActivity {
 
     TextView tvtimesong,tvtataltimesong;
     SeekBar sktime;
+    int position = 0;
+    ArrayList<Baihat> arraySong;
     ImageButton imgplay,imgpre,imgnext,imgrepeat,imgsuffer;
     ViewPager viewPagerplaynhac;
     public static ArrayList<Baihat> mangbaihat = new ArrayList<>();
@@ -73,6 +77,7 @@ public class PlaynhacActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void GetDataFromIntent() {
@@ -83,10 +88,12 @@ public class PlaynhacActivity extends AppCompatActivity {
             if (intent.hasExtra("cakhuc")){
                 Baihat baihat = intent.getParcelableExtra("cakhuc");;
                 mangbaihat.add(baihat);
+                ArrayList<Baihat> baihatArrayList = intent.getParcelableArrayListExtra("cacbaihat");
+                mangbaihat = baihatArrayList;
                 MediaPlayer mediaPlayer = new MediaPlayer();
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 try {
-                    mediaPlayer.setDataSource(baihat.getLinkBaihat());
+                    mediaPlayer.setDataSource(mangbaihat.get(Integer.parseInt(baihat.getIdBaihat())).getLinkBaihat());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -100,6 +107,19 @@ public class PlaynhacActivity extends AppCompatActivity {
             if (intent.hasExtra("cacbaihat")){
                 ArrayList<Baihat> baihatArrayList = intent.getParcelableArrayListExtra("cacbaihat");
                 mangbaihat = baihatArrayList;
+                MediaPlayer mediaPlayer = new MediaPlayer();
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                try {
+                    mediaPlayer.setDataSource(mangbaihat.get(0).getLinkBaihat());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    mediaPlayer.prepare(); // might take long! (for buffering, etc)
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mediaPlayer.start();
             }
         }
 
@@ -128,6 +148,49 @@ public class PlaynhacActivity extends AppCompatActivity {
 //            fragment_dianhac = (Fragment_Dianhac) adapternhac.getItem(1);
 //        }
     }
+    private void UpdateTimeSong(){
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                SimpleDateFormat dinhDangGio = new SimpleDateFormat("mm:ss");
+                tvtimesong.setText(dinhDangGio.format(mediaPlayer.getCurrentPosition()));
+                //update progress skSong
+                sktime.setProgress(mediaPlayer.getCurrentPosition());
+
+                //kiểm tra thời gian bài hát --> nếu kết thúc --> next
+
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        position++;
+                        if (position > arraySong.size() - 1){
+                            position = 0;
+                        }
+                        if (mediaPlayer.isPlaying()){
+                            mediaPlayer.stop();
+                        }
+                        mediaPlayer.start();
+                        imgplay.setImageResource(R.drawable.pause);
+                        SetTimTotal();
+                        UpdateTimeSong();
+
+                    }
+                });
+                handler.postDelayed(this, 500);
+            }
+        },100);
+    }
+
+
+    private void SetTimTotal(){
+
+        SimpleDateFormat dinhDangGio = new SimpleDateFormat("mm:ss");
+        tvtimesong.setText(dinhDangGio.format(mediaPlayer.getDuration()));
+        //gán max của skSong  = MediaPlay.getDuration();
+        sktime.setMax(mediaPlayer.getDuration());
+    }
+
 //    class PlayMp3 extends AsyncTask<String, Void, String>{
 //
 //        @Override
