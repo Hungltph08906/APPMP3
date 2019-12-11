@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -53,8 +54,10 @@ public class DanhsachcacbaihatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danhsachcacbaihat);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         anhxa();
-//        init();
+        init();
         DataIntent();
         if (album != null && !album.getTenAlbum().equals("")){
             setValueInView(album.getTenAlbum(),album.getIconAlbum());
@@ -78,7 +81,7 @@ public class DanhsachcacbaihatActivity extends AppCompatActivity {
                 danhsachbaihatAdapter = new DanhsachbaihatAdapter(DanhsachcacbaihatActivity.this,mangbaihat);
                 rycdanhsachcacbaihat.setLayoutManager(new LinearLayoutManager(DanhsachcacbaihatActivity.this));
                 rycdanhsachcacbaihat.setAdapter(danhsachbaihatAdapter);
-                eventClick();
+                eventCLick();
 
             }
 
@@ -98,7 +101,7 @@ public class DanhsachcacbaihatActivity extends AppCompatActivity {
                 danhsachbaihatAdapter = new DanhsachbaihatAdapter(DanhsachcacbaihatActivity.this,mangbaihat);
                 rycdanhsachcacbaihat.setLayoutManager(new LinearLayoutManager(DanhsachcacbaihatActivity.this));
                 rycdanhsachcacbaihat.setAdapter(danhsachbaihatAdapter);
-                eventClick();
+                eventCLick();
 
             }
 
@@ -128,7 +131,7 @@ public class DanhsachcacbaihatActivity extends AppCompatActivity {
     }
 
     private void init() {
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,6 +142,7 @@ public class DanhsachcacbaihatActivity extends AppCompatActivity {
 
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
+        floatingActionButton.setEnabled(false);
     }
 
     
@@ -165,7 +169,8 @@ public class DanhsachcacbaihatActivity extends AppCompatActivity {
         floatingActionButton = findViewById(R.id.floatingactionbutton);
         imgdanhsachbaihat = findViewById(R.id.imgdanhsachbaihat);
     }
-    private void eventClick(){
+    private void eventCLick(){
+        floatingActionButton.setEnabled(true);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -173,7 +178,6 @@ public class DanhsachcacbaihatActivity extends AppCompatActivity {
                 intent.putExtra("cacbaihat",mangbaihat);
                 startActivity(intent);
             }
-
         });
 
     }

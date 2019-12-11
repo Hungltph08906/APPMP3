@@ -5,10 +5,9 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -20,107 +19,58 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import vn.edu.poly.appmp3.Adapter.ViewPagerPlaylistnhac;
+import vn.edu.poly.appmp3.Fragment.Fragment_Dianhac;
+import vn.edu.poly.appmp3.Fragment.Fragment_Playdanhsachbaihat;
 import vn.edu.poly.appmp3.Model.Baihat;
 import vn.edu.poly.appmp3.R;
-import vn.edu.poly.appmp3.Song;
 
 public class PlaynhacActivity extends AppCompatActivity {
 
-    TextView txtTitle, txtTimeSong, txtTimeTotal;
-    SeekBar skSong;
-    ImageView imgHinh;
-    ViewPager viewPagerPlaynhac;
+    TextView tvtimesong,tvtataltimesong;
+    SeekBar sktime;
+    ImageButton imgplay,imgpre,imgnext,imgrepeat,imgsuffer;
+    ViewPager viewPagerplaynhac;
     public static ArrayList<Baihat> mangbaihat = new ArrayList<>();
     public static ViewPagerPlaylistnhac adapternhac;
-    ImageButton btnPrev, btnPlay, btnStop, btnNext;
-
-    ArrayList<Song> arraySong;
-    int position = 0;
+    Fragment_Dianhac fragment_dianhac;
+    Fragment_Playdanhsachbaihat fragment_playdanhsachbaihat;
     MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playnhac);
-        Anhxa();
+        init();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         GetDataFromIntent();
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        enventClick();
 
-                position++;
-                if (position > arraySong.size() - 1){
-                    position = 0;
-                }
+    }
+
+    private void enventClick() {
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (adapternhac.getItem(1)!= null){
+//                    if(mangbaihat.size()>0){
+//                        mediaPlayer.start();
+//                    }
+//                }
+//
+//            }
+//        },500);
+        imgplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if (mediaPlayer.isPlaying()){
-                    mediaPlayer.stop();
-                }
-                mediaPlayer.start();
-                btnPlay.setImageResource(R.drawable.pause);
-                TimeSong();
-                UpdateTimeSong();
-            }
-        });
-
-        btnPrev.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                position--;
-                if (position < 0){
-                    position = arraySong.size() - 1;
-                }
-                if (mediaPlayer.isPlaying()){
-                    mediaPlayer.stop();
-                }
-                mediaPlayer.start();
-
-                btnPlay.setImageResource(R.drawable.pause);
-                TimeSong();
-                UpdateTimeSong();
-            }
-        });
-
-        btnStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mediaPlayer.stop();
-                mediaPlayer.release();
-                btnPlay.setImageResource(R.drawable.play1);
-            }
-        });
-
-        btnPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mediaPlayer.isPlaying()){
-                    //nếu đang phát --> pause --> đổi hình play
                     mediaPlayer.pause();
-                    btnPlay.setImageResource(R.drawable.play1);
+                    imgplay.setImageResource(R.drawable.play);
+
                 }else {
-                    //đang ngừng --> phát --> đổi hình pause
                     mediaPlayer.start();
-                    btnPlay.setImageResource(R.drawable.pause);
+                    imgplay.setImageResource(R.drawable.stop);
                 }
-                TimeSong();
-
-            }
-        });
-
-        skSong.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-                mediaPlayer.seekTo(skSong.getProgress());
             }
         });
     }
@@ -128,10 +78,10 @@ public class PlaynhacActivity extends AppCompatActivity {
     private void GetDataFromIntent() {
         Intent intent = getIntent();
         mangbaihat.clear();
-        if(intent != null){
-
+        enventClick();
+        if (intent!=null){
             if (intent.hasExtra("cakhuc")){
-                Baihat baihat = intent.getParcelableExtra("cakhuc");
+                Baihat baihat = intent.getParcelableExtra("cakhuc");;
                 mangbaihat.add(baihat);
             }
             if (intent.hasExtra("cacbaihat")){
@@ -139,25 +89,33 @@ public class PlaynhacActivity extends AppCompatActivity {
                 mangbaihat = baihatArrayList;
             }
         }
+
     }
 
-    private void Anhxa() {
-        txtTimeSong  = (TextView) findViewById(R.id.textViewTimesong);
-        txtTimeTotal = (TextView) findViewById(R.id.textTimetotal);
-        txtTitle     = (TextView) findViewById(R.id.textviewTitle);
-        skSong       = (SeekBar) findViewById(R.id.seekBar);
-        btnNext      = (ImageButton) findViewById(R.id.imageButtonnext);
-        btnPrev      = (ImageButton) findViewById(R.id.imageButtonpre);
-        btnPlay      = (ImageButton) findViewById(R.id.imageButtonplay);
-        btnStop      = (ImageButton) findViewById(R.id.imageButtonstop);
-        if(mangbaihat.size()>0){
-            getSupportActionBar().setTitle(mangbaihat.get(0).getTenBaihat());
-            new PlayMp3().execute(mangbaihat.get(0).getLinkBaihat());
-        }
-//        adapternhac = new ViewPagerPlaylistnhac(getSupportFragmentManager());
-//        adapternhac.AddFragment();
+    private void init() {
+        sktime = findViewById(R.id.seekBar);
+        tvtimesong = findViewById(R.id.tvtimesong);
+        tvtataltimesong = findViewById(R.id.tvtotaltimesong);
+        imgplay = findViewById(R.id.imgplay);
+        imgpre = findViewById(R.id.imgpre);
+        imgnext = findViewById(R.id.imgnext);
+        imgrepeat = findViewById(R.id.imgrepeat);
+        imgsuffer = findViewById(R.id.imgsuffle);
+        fragment_dianhac = new Fragment_Dianhac();
+        fragment_playdanhsachbaihat = new Fragment_Playdanhsachbaihat();
+        viewPagerplaynhac = findViewById(R.id.viewpagerplaynhac);
+        adapternhac = new ViewPagerPlaylistnhac(getSupportFragmentManager());
+//        adapternhac.AddFragment(fragment_dianhac);
+//        adapternhac.AddFragment(fragment_playdanhsachbaihat);
+        viewPagerplaynhac.setAdapter(adapternhac);
+//        if (mangbaihat.size()>0){
+//            getSupportActionBar().setTitle(mangbaihat.get(0).getTenBaihat());
+//            new PlayMp3().execute(mangbaihat.get(0).getLinkBaihat());
+//            imgplay.setImageResource(R.drawable.stop);
+//            fragment_dianhac = (Fragment_Dianhac) adapternhac.getItem(1);
+//        }
     }
-    class PlayMp3 extends AsyncTask<String,Void,String>{
+    class PlayMp3 extends AsyncTask<String, Void, String>{
 
         @Override
         protected String doInBackground(String... strings) {
@@ -167,9 +125,10 @@ public class PlaynhacActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String baihat) {
+
             super.onPostExecute(baihat);
             try {
-            mediaPlayer= new MediaPlayer();
+            mediaPlayer = new MediaPlayer();
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
@@ -178,9 +137,8 @@ public class PlaynhacActivity extends AppCompatActivity {
                     mediaPlayer.reset();
                 }
             });
-
-                mediaPlayer.setDataSource(baihat);
-                mediaPlayer.prepare();
+            mediaPlayer.setDataSource(baihat);
+            mediaPlayer.prepare();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -190,42 +148,8 @@ public class PlaynhacActivity extends AppCompatActivity {
     }
 
     private void TimeSong() {
-        SimpleDateFormat dinhDangGio = new SimpleDateFormat("mm:ss");
-        txtTimeTotal.setText(dinhDangGio.format(mediaPlayer.getDuration()));
-        //gán max của skSong  = MediaPlay.getDuration();
-        skSong.setMax(mediaPlayer.getDuration());
-    }
-    private void UpdateTimeSong(){
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                SimpleDateFormat dinhDangGio = new SimpleDateFormat("mm:ss");
-                txtTimeSong.setText(dinhDangGio.format(mediaPlayer.getCurrentPosition()));
-                //update progress skSong
-                skSong.setProgress(mediaPlayer.getCurrentPosition());
-
-                //kiểm tra thời gian bài hát --> nếu kết thúc --> next
-
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        position++;
-                        if (position > arraySong.size() - 1){
-                            position = 0;
-                        }
-                        if (mediaPlayer.isPlaying()){
-                            mediaPlayer.stop();
-                        }
-                        mediaPlayer.start();
-                        btnPlay.setImageResource(R.drawable.pause);
-                        TimeSong();
-                        UpdateTimeSong();
-
-                    }
-                });
-                handler.postDelayed(this, 500);
-            }
-        },100);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
+        tvtataltimesong.setText(simpleDateFormat.format(mediaPlayer.getDuration()));
+        sktime.setMax(mediaPlayer.getDuration());
     }
 }
