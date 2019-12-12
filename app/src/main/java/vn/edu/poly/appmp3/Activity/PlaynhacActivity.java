@@ -50,18 +50,14 @@ public class PlaynhacActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                position++;
-                if (position > arraySong.size() - 1){
-                    position = 0;
+                int currentPosition = mediaPlayer.getCurrentPosition();
+                int duration = mediaPlayer.getDuration();
+                // 5 giây.
+                int ADD_TIME = 5000;
+
+                if(currentPosition + ADD_TIME < duration) {
+                    mediaPlayer.seekTo(currentPosition + ADD_TIME);
                 }
-                if (mediaPlayer.isPlaying()){
-                    mediaPlayer.stop();
-                }
-                GetDataFromIntent();
-                mediaPlayer.start();
-                btnPlay.setImageResource(R.drawable.pause);
-                SetTimTotal();
-                UpdateTimeSong();
             }
         });
 
@@ -69,19 +65,15 @@ public class PlaynhacActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                position--;
-                if (position < 0){
-                    position = arraySong.size() - 1;
-                }
-                if (mediaPlayer.isPlaying()){
-                    mediaPlayer.stop();
-                }
-                GetDataFromIntent();
-                mediaPlayer.start();
+                int currentPosition = mediaPlayer.getCurrentPosition();
+                int duration = mediaPlayer.getDuration();
 
-                btnPlay.setImageResource(R.drawable.pause);
-                SetTimTotal();
-                UpdateTimeSong();
+                // 5 giây.
+                int SUBTRACT_TIME = 5000;
+
+                if(currentPosition - SUBTRACT_TIME > 0 )  {
+                    mediaPlayer.seekTo(currentPosition - SUBTRACT_TIME);
+                }
             }
         });
 
@@ -140,6 +132,7 @@ public class PlaynhacActivity extends AppCompatActivity {
                 //update progress skSong
                 skSong.setProgress(mediaPlayer.getCurrentPosition());
 
+
                 //kiểm tra thời gian bài hát --> nếu kết thúc --> next
 
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -194,6 +187,7 @@ public class PlaynhacActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 mediaPlayer.start();
+                txtTitle.setText(baihat.getTenBaihat());
 
             }
             if (intent.hasExtra("cacbaihat")){

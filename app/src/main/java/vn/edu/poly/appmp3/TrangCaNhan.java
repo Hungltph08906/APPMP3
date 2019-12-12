@@ -1,9 +1,11 @@
 package vn.edu.poly.appmp3;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import vn.edu.poly.appmp3.Activity.AlbumActivity;
@@ -18,6 +20,19 @@ public class TrangCaNhan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trang_ca_nhan);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Thông Báo!!!!");
+        builder.setMessage("Ưng dụng hơi chậm nên quý khách vui lòng kiên nhẫn đợi, không nhấn lên tục, xin lỗi vì sự bất tiện này");
+        builder.setCancelable(false);
+
+        builder.setNegativeButton("Đã Hiểu", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     public void baihat(View view) {

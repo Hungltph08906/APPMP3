@@ -27,7 +27,7 @@
         <activity android:name=".Activity.PlaylistActivity" />
         <activity android:name=".BaiHat11" />
         <activity android:name=".TrangCaNhan" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

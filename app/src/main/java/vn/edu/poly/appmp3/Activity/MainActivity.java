@@ -1,10 +1,13 @@
-package vn.edu.poly.appmp3;
-
-import androidx.appcompat.app.AppCompatActivity;
+package vn.edu.poly.appmp3.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import vn.edu.poly.appmp3.R;
+import vn.edu.poly.appmp3.TrangCaNhan;
 
 public class MainActivity extends AppCompatActivity {
 
